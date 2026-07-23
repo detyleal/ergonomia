@@ -64,7 +64,7 @@ export async function POST(request) {
     }
 
     // Inserir no Supabase
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('respostas')
       .insert([
         {
@@ -73,8 +73,7 @@ export async function POST(request) {
           nordico,
           diagrama,
         },
-      ])
-      .select();
+      ]);
 
     if (error) {
       console.error('Supabase error:', error);
@@ -85,7 +84,7 @@ export async function POST(request) {
     }
 
     return NextResponse.json(
-      { message: 'Resposta salva com sucesso!', id: data[0]?.id },
+      { message: 'Resposta salva com sucesso!' },
       { status: 201 }
     );
   } catch (err) {
