@@ -79,7 +79,7 @@ export async function POST(request) {
     if (error) {
       console.error('Supabase error:', error);
       return NextResponse.json(
-        { error: 'Erro ao salvar resposta. Tente novamente.' },
+        { error: `Erro ao salvar: ${error.message} (${error.code})` },
         { status: 500 }
       );
     }
@@ -91,7 +91,7 @@ export async function POST(request) {
   } catch (err) {
     console.error('Server error:', err);
     return NextResponse.json(
-      { error: 'Erro interno do servidor.' },
+      { error: `Erro interno: ${err.message}` },
       { status: 500 }
     );
   }
