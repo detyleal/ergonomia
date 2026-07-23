@@ -9,7 +9,7 @@ export async function POST(request) {
     const body = await request.json();
 
     // Validação básica
-    const { trabalha_home_office, regiao_sjdr, nordico, diagrama } = body;
+    const { trabalha_home_office, regiao_sjdr, foto_url, nordico, diagrama } = body;
 
     if (typeof trabalha_home_office !== 'boolean') {
       return NextResponse.json(
@@ -70,6 +70,7 @@ export async function POST(request) {
         {
           trabalha_home_office,
           regiao_sjdr,
+          foto_url: foto_url || null,
           nordico,
           diagrama,
         },

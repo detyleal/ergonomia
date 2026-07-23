@@ -1,8 +1,14 @@
 'use client';
 
+import PhotoUpload from './PhotoUpload';
+
 export default function InitialQuestions({ data, onChange }) {
   const handleSelect = (field, value) => {
     onChange({ ...data, [field]: value });
+  };
+
+  const handlePhotoUploaded = (url) => {
+    onChange({ ...data, foto_url: url });
   };
 
   return (
@@ -70,7 +76,16 @@ export default function InitialQuestions({ data, onChange }) {
             </button>
           </div>
         </div>
+
+        {/* Foto do local de trabalho */}
+        <div className="question-card">
+          <PhotoUpload
+            photoUrl={data.foto_url}
+            onPhotoUploaded={handlePhotoUploaded}
+          />
+        </div>
       </div>
     </div>
   );
 }
+

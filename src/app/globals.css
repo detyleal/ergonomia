@@ -870,3 +870,100 @@ body::before {
   width: 180px;
   height: auto;
 }
+
+/* ========== PHOTO UPLOAD ========== */
+.photo-upload {
+  width: 100%;
+}
+
+.photo-upload__optional {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--neutral-500);
+}
+
+.photo-upload__hint {
+  font-size: 0.85rem;
+  color: var(--neutral-400);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.photo-upload__dropzone {
+  border: 2px dashed var(--neutral-600);
+  border-radius: var(--radius-md);
+  padding: 40px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.photo-upload__dropzone:hover {
+  border-color: var(--primary-400);
+  background: rgba(0, 180, 205, 0.04);
+}
+
+.photo-upload__dropzone--uploading {
+  border-color: var(--primary-500);
+  background: rgba(0, 180, 205, 0.06);
+  cursor: wait;
+}
+
+.photo-upload__dropzone-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.photo-upload__dropzone-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--neutral-300);
+}
+
+.photo-upload__dropzone-subtext {
+  font-size: 0.8rem;
+  color: var(--neutral-500);
+}
+
+.photo-upload__preview-wrapper {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--neutral-700);
+}
+
+.photo-upload__preview {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.photo-upload__remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.85);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+}
+
+.photo-upload__remove:hover {
+  background: rgba(239, 68, 68, 1);
+  transform: scale(1.05);
+}
+

@@ -82,6 +82,7 @@ export default function Home() {
     const payload = {
       trabalha_home_office: initialData.trabalha_home_office,
       regiao_sjdr: initialData.regiao_sjdr,
+      foto_url: initialData.foto_url || null,
       nordico: nordicoData,
       diagrama: filledDiagram,
     };
