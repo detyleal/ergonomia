@@ -161,8 +161,8 @@ export default function ReportModal({ resposta, onClose }) {
             </div>
           </div>
 
-          {/* Photo + Nordic side by side */}
-          <div className="report-two-col">
+          {/* Content Columns (Horizontal Layout) */}
+          <div className="report-three-col">
             {/* Foto do local */}
             <div className="report-section report-section--photo">
               <h3 className="report-section__title">📷 Local de Trabalho</h3>
@@ -209,44 +209,44 @@ export default function ReportModal({ resposta, onClose }) {
                 })}
               </div>
             </div>
-          </div>
 
-          {/* Diagrama de Áreas Dolorosas */}
-          <div className="report-section">
-            <h3 className="report-section__title">🗺️ Diagrama de Áreas Dolorosas — Escala 0 a 7</h3>
-            <div className="report-diagram-cols">
-              {['esquerdo', 'direito'].map((side) => (
-                <div key={side} className="report-diagram-side">
-                  <h4 className="report-diagram-side__title">
-                    {side === 'esquerdo' ? '◀ Lado Esquerdo' : 'Lado Direito ▶'}
-                  </h4>
-                  <div className="report-diagram-bars">
-                    {DIAGRAM_REGIONS.map((region) => {
-                      const val = resposta.diagrama?.[side]?.[region.key] ?? 0;
-                      return (
-                        <div key={region.key} className="report-diagram-bar-row">
-                          <span className="report-diagram-bar-row__label">{region.label}</span>
-                          <div className="report-diagram-bar-row__track">
-                            <div
-                              className="report-diagram-bar-row__fill"
-                              style={{
-                                width: `${(val / 7) * 100}%`,
-                                background: getBarColor(val),
-                              }}
-                            />
+            {/* Diagrama de Áreas Dolorosas */}
+            <div className="report-section">
+              <h3 className="report-section__title">🗺️ Diagrama de Áreas Dolorosas — Escala 0 a 7</h3>
+              <div className="report-diagram-cols">
+                {['esquerdo', 'direito'].map((side) => (
+                  <div key={side} className="report-diagram-side">
+                    <h4 className="report-diagram-side__title">
+                      {side === 'esquerdo' ? '◀ Lado Esquerdo' : 'Lado Direito ▶'}
+                    </h4>
+                    <div className="report-diagram-bars">
+                      {DIAGRAM_REGIONS.map((region) => {
+                        const val = resposta.diagrama?.[side]?.[region.key] ?? 0;
+                        return (
+                          <div key={region.key} className="report-diagram-bar-row">
+                            <span className="report-diagram-bar-row__label">{region.label}</span>
+                            <div className="report-diagram-bar-row__track">
+                              <div
+                                className="report-diagram-bar-row__fill"
+                                style={{
+                                  width: `${(val / 7) * 100}%`,
+                                  background: getBarColor(val),
+                                }}
+                              />
+                            </div>
+                            <span
+                              className="report-diagram-bar-row__val"
+                              style={{ color: getBarColor(val) || 'var(--neutral-500)' }}
+                            >
+                              {val}
+                            </span>
                           </div>
-                          <span
-                            className="report-diagram-bar-row__val"
-                            style={{ color: getBarColor(val) || 'var(--neutral-500)' }}
-                          >
-                            {val}
-                          </span>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
