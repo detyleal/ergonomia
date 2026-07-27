@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import AdminLogin from '@/components/AdminLogin';
+import ReportModal from '@/components/ReportModal';
 
 const NORDIC_REGIONS = [
   { key: 'pescoco', label: 'Pescoço', icon: '🦴' },
@@ -178,6 +179,7 @@ export default function AdminPage() {
   const [expandedRow, setExpandedRow] = useState(null);
   const [photoModal, setPhotoModal] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [reportResposta, setReportResposta] = useState(null);
   const ITEMS_PER_PAGE = 10;
 
   useEffect(() => {
@@ -547,6 +549,7 @@ export default function AdminPage() {
                     <span className="admin-table__th">Home Office</span>
                     <span className="admin-table__th">SJDR</span>
                     <span className="admin-table__th">Foto</span>
+                    <span className="admin-table__th">Relatório</span>
                     <span className="admin-table__th admin-table__th--action"></span>
                   </div>
 
@@ -579,6 +582,18 @@ export default function AdminPage() {
                           </span>
                           <span className="admin-table__td">
                             {r.foto_url ? '📸' : '—'}
+                          </span>
+                          <span className="admin-table__td">
+                            <button
+                              className="admin-btn-report"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setReportResposta(r);
+                              }}
+                              title="Exportar relatório"
+                            >
+                              📄
+                            </button>
                           </span>
                           <span className="admin-table__td admin-table__td--action">
                             <span className={`admin-table__chevron ${isExpanded ? 'admin-table__chevron--open' : ''}`}>
@@ -789,6 +804,14 @@ export default function AdminPage() {
             <p>As respostas aparecerão aqui assim que os participantes preencherem o formulário.</p>
           </div>
         </div>
+      )}
+
+      {/* Report Modal */}
+      {reportResposta && (
+        <ReportModal
+          resposta={reportResposta}
+          onClose={() => setReportResposta(null)}
+        />
       )}
     </div>
   );
